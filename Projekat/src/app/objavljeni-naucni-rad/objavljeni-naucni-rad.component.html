@@ -1,0 +1,28 @@
+<h3>Dodavanje</h3>
+<app-objavljeni-naucni-rad-form [naucniRad]="naucniRad" (createEvent)="create($event)"></app-objavljeni-naucni-rad-form>
+
+<h3>Izmena</h3>
+<app-objavljeni-naucni-rad-form [objavljeniNaucniRad]="objavljeniNaucniRad" [naucniRad]="naucniRad" (createEvent)="update($event)"></app-objavljeni-naucni-rad-form>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Datum objave</th>
+            <th>Akcije</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let m of objavljeniNaucniRad">
+            <td>{{m.id}}</td>
+            <td>{{m.datumObjave}}</td>
+            <td *ngIf="m.objavljeniNaucniRad != null">{{m.objavljeniNaucniRad["naziv"]}}</td>
+            <td><button (click)="delete(m.id)">Ukloni</button>
+                <button (click)="setUpdate(m)">Izmeni</button>
+                <a routerLink="/mesta/{{m.id}}">Detalji</a>
+            </td>
+        </tr>
+        
+    </tbody>
+</table>

@@ -1,0 +1,32 @@
+<p>apstrakt works!</p>
+<h3>Dodavanje</h3>
+<app-apstrakt-form (createEvent)="create($event)"></app-apstrakt-form>
+
+<h3>Izmena</h3>
+<app-apstrakt-form (createEvent)="update($event)"></app-apstrakt-form>
+
+<p></p>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Tekst</th>
+            <th>Nauucni rad</th>
+            <th>Akcije</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let a of apstrakt">
+            <td>{{a.id}}</td>
+            <td>{{a.tekst}}</td>
+            
+            <td *ngIf="a.naucniRad != null">{{a.naucniRad.naziv}}</td>
+            
+            <td><button (click)="delete(a.id)">Ukloni</button>
+                <button (click)="setUpdate(a)">Izmeni</button>
+                <!-- <button (click)="prikaziDetalje(a)">Detalji</button> I NACIN -->
+                <!-- <a routerLink="/adrese/{{a.id}}">Detalji</a>  II NACIN -->
+            </td>
+        </tr>
+    </tbody>
+</table>

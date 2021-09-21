@@ -1,0 +1,29 @@
+<form [formGroup]="form" (ngSubmit)="create()" ngNativeValidate>
+    <div>
+        <label>ID: <input type="number" formControlName="id" ></label>
+    </div>
+    <div>
+        <label>Ulica: <input type="text" formControlName="ulica" ></label>
+    </div>
+    <div>
+        <label>Broj: <input type="number" formControlName="broj" ></label>
+    </div>
+    <div>
+        <label >Mesto:
+            <select formControlName="mesto" >
+                <option *ngFor="let f of mesto" [ngValue]="f">{{f.naziv}}</option>
+            </select>
+        </label>
+    </div>
+    
+    <!-- <div>
+        <label >Nastavnik:
+            <select formControlName="nastavnik" >
+                <option *ngFor="let n of nastavnik" [ngValue]="n">{{n.ime}}</option>
+            </select>
+        </label>
+    </div> -->
+    <div>
+        <input type="submit" value="Potvrdi">
+    </div>
+</form>

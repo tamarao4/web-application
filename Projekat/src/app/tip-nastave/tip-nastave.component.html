@@ -1,0 +1,29 @@
+<h3>Dodavanje</h3>
+<app-tip-nastave-form [nastavnikNaRealizaciji]="nastavnikNaRealizaciji" (createEvent)="create($event)"></app-tip-nastave-form>
+
+<h3>Izmena</h3>
+<app-tip-nastave-form [nastavnikNaRealizaciji]="nastavnikNaRealizaciji" [tipoviNastave]="tipoviNastaveUpdate"  (createEvent)="update($event)"></app-tip-nastave-form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Naziv</th>
+            
+            <th>Akcije</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let t of tipoviNastave">
+            <td>{{t.id}}</td>
+            <td>{{t.naziv}}</td>
+            <td *ngIf="m.nastavnikNaRealizaciji != null">{{m.drzava["nastavnikNaRealizaciji"]}}</td>
+            <td><button (click)="delete(t.id)">Ukloni</button>
+                <button (click)="setUpdate(t)">Izmeni</button>
+                <button (click)="prikaziDetalje(t)">Detalji</button> <!-- I NACIN -->
+                <a routerLink="/tipovinastave/{{t.id}}">Detalji</a>  <!-- II NACIN -->
+            </td>
+        </tr>
+        
+    </tbody>
+</table>

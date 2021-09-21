@@ -1,0 +1,36 @@
+<form [formGroup]="form" (ngSubmit)="create()" ngNativeValidate>
+    <div>
+        <label>ID: <input type="number" formControlName="id" ></label>
+    </div>
+    <div>
+        <label >Naucni rad:
+            <select formControlName="naucniRad" >
+                <option *ngFor="let n of naucniRad" [ngValue]="n">{{n.naziv}}</option>
+            </select>
+        </label>
+    </div>
+    <div>
+        <label >Neregistrovani korisnik:
+            <select formControlName="neregistrovaniKorisnik" >
+                <option *ngFor="let n of neregistrovaniKorisnik" [ngValue]="n">{{n.ime}}{{n.prezime}}</option>
+            </select>
+        </label>
+    </div>
+    <div>
+        <label >Nastavnik:
+            <select formControlName="nastavnik" >
+                <option *ngFor="let n of nastavnik" [ngValue]="n">{{n.ime}}{{n.prezime}}</option>
+            </select>
+        </label>
+    </div>
+    <div>
+        <label >Student:
+            <select formControlName="student" >
+                <option *ngFor="let n of student" [ngValue]="n">{{n.ime}}{{n.prezime}}</option>
+            </select>
+        </label>
+    </div>
+    <div>
+        <input type="submit" value="Potvrdi">
+    </div>
+</form>

@@ -1,0 +1,31 @@
+<form [formGroup]="form" (ngSubmit)="create()" ngNativeValidate>
+    <div>
+        <label>ID: <input type="number" formControlName="id" ></label>
+    </div>
+    <div>
+        <label>Ime: <input type="text" formControlName="ime" ></label>
+    </div>
+    <div>
+        <label>Biografija: <input type="text" formControlName="biografija" ></label>
+    </div>
+    <div>
+        <label>JMBG: <input type="text" formControlName="jmbg" ></label>
+    </div>
+    <div>
+        <label >Adresa:
+            <select formControlName="adresa" >
+                <option *ngFor="let f of adresa" [ngValue]="f">{{f.id}} | {{f.ulica}}}</option>
+            </select>
+        </label>
+    </div>
+    <div>
+        <label >Objavljeni naucni rad:
+            <select formControlName="objavljeniNaucniRad" >
+                <option  *ngFor="let u of objavljeniNaucniRad" [ngValue]="u">{{u.id}} | {{u.datumObjave}}</option>
+            </select>
+        </label>
+    </div>
+    <div>
+        <input type="submit" value="Potvrdi">
+    </div>
+</form>

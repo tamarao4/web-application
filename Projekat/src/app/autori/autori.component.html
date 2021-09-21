@@ -1,0 +1,46 @@
+<h3>Dodavanje</h3>
+<app-autori-form 
+
+[naucniRad]="naucniRad"  
+[neregistrovaniKorisnik]="neregistrovaniKorisnik"  
+[nastavnik]="nastavnik"
+[student]="student"
+(createEvent)="create($event)"></app-autori-form>
+
+<h3>Izmena</h3>
+<app-autori-form [autor]="autorUpdate" 
+[naucniRad]="naucniRad" 
+[neregistrovaniKorisnik]="neregistrovaniKorisnik"  
+[nastavnik]="nastavnik" 
+[student]="student" 
+(createEvent)="update($event)"></app-autori-form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Naucni Rad</th>
+            <th>Neregistrovani korinik</th>
+            <th>Nastavnik</th>
+            <th>Student</th>
+            <!-- <th>Tip Zvanja</th> -->
+            <th>Akcije</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let z of autor">
+            <td>{{z.id}}</td>
+            <td *ngIf="z.naucniRad != null">{{z.naucniRad["naziv"]}}</td>
+            <td *ngIf="z.neregistrovaniKorisnik != null">{{z.neregistrovaniKorisnik["ime"]}}</td>
+            <td *ngIf="z.nastavnik != null">{{z.nastavnik["ime"]}}</td>
+            <td *ngIf="z.student != null">{{z.student["ime"]}}</td>
+
+            <td><button (click)="delete(z.id)">Ukloni</button>
+                <button (click)="setUpdate(z)">Izmeni</button>
+                <button (click)="prikaziDetalje(z)">Detalji</button> <!-- I NACIN -->
+                <a routerLink="/zvanja/{{z.id}}">Detalji</a>  <!-- II NACIN -->
+            </td>
+        </tr>
+        
+    </tbody>
+</table>

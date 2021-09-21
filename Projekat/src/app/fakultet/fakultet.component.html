@@ -1,0 +1,50 @@
+<h3>Dodavanje</h3>
+<app-fakultet-form
+[adresa]="adresa"
+[nastavnik]="nastavnik"  
+[univerzitet]="univerzitet" 
+
+ (createEvent)="create($event)"></app-fakultet-form>
+
+<h3>Izmena</h3>
+<app-fakultet-form  
+[fakultet]="fakultetUpdate" 
+[adresa]="adresa"
+[nastavnik]="nastavnik"  
+ (createEvent)="update($event)"></app-fakultet-form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Naziv</th>
+            <th>Telefon</th>
+            <th>Email</th>
+            <th>Opis</th>
+            <th>Akcije</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let fakultet of fakulteti">
+            <td>{{fakultet.id}}</td>
+            <td>{{fakultet.naziv}}</td>
+            <td>{{fakultet.telefon}}</td>
+            <td>{{fakultet.email}}</td>
+            <td>{{fakultet.opis}}</td>
+            <td><button (click)="delete(fakultet.id)">Ukloni</button>
+                <button (click)="setUpdate(fakultet)">Izmeni</button>
+                <button (click)="prikaziDetalje(fakultet)">Detalji</button> <!-- I NACIN -->
+                <a routerLink="/fakulteti/{{fakultet.id}}">Detalji</a>  <!-- II NACIN -->
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<!--
+    <td>
+    <p *ngFor="let studijskiProgram of fakultet.studijskiProgram">
+{{studijskiProgram.naziv}}</p>
+</td>
+-->

@@ -1,0 +1,32 @@
+<h3>Dodavanje</h3>
+<app-drzava-forma  (createEvent)="create($event)"></app-drzava-forma>
+
+<h3>Izmena</h3>
+<app-drzava-forma [drzava]="drzavaUpdate"  (createEvent)="update($event)"></app-drzava-forma>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Naziv</th>
+           
+            <th>Akcije</th>
+        </tr>
+        <!-- Mozda bih mogao da uzmem id drzava
+        i da pretrazim novi array drzava i ispisem ime drzava
+        -->
+    </thead>
+    <tbody>
+        <tr *ngFor="let z of drzava">
+            <td>{{z.id}}</td>
+            <td>{{z.naziv}}</td>
+            
+            <td><button (click)="delete(z.id)">Ukloni</button>
+                <button (click)="setUpdate(z)">Izmeni</button>
+                <a routerLink="/drzava/{{z.id}}">Detalji</a>
+            </td>
+        </tr>
+        
+    </tbody>
+</table>

@@ -1,0 +1,27 @@
+<h3>Dodavanje</h3>
+<app-kljucne-reci-form (createEvent)="create($event)"></app-kljucne-reci-form>
+
+<h3>Izmena</h3>
+<app-kljucne-reci-form kljucnereci (createEvent)="update($event)"></app-kljucne-reci-form>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Reci</th>
+            <th>Akcije</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let m of kljucnereci">
+            <td>{{m.id}}</td>
+            <td>{{m.reci}}</td>
+            <td><button (click)="delete(m.id)">Ukloni</button>
+                <button (click)="setUpdate(m)">Izmeni</button>
+                <a routerLink="/mesta/{{m.id}}">Detalji</a>
+            </td>
+        </tr>
+        
+    </tbody>
+</table>

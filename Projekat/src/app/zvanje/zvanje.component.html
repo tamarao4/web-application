@@ -1,0 +1,41 @@
+<h3>Dodavanje</h3>
+<app-zvanje-form 
+[tipZvanja]="tipZvanja"
+[nastavnik]="nastavnik"  
+[naucnaOblast]="naucnaOblast"
+(createEvent)="create($event)"></app-zvanje-form>
+
+<h3>Izmena</h3>
+<app-zvanje-form [zvanje]="zvanjaUpdate" [tipZvanja]="tipZvanja" (createEvent)="update($event)"></app-zvanje-form>
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Datum izbora</th>
+            <th>Datum prestanka</th>
+            <!-- <th>Tip Zvanja</th> -->
+            <th>Akcije</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let z of zvanje">
+            <td>{{z.id}}</td>
+            <td>{{z.datumIzbora}}</td>
+            <td>{{z.datumPrestanka}}</td>
+            <!-- <td *ngIf="z.tipZvanjaId != null">{{z.tipZvanjaId["naziv"]}}</td>
+            <td *ngIf="z.nastavnik != null">{{z.nastavnik["ime"]}}</td>
+            <td *ngIf="z.naucnaOblast != null">{{z.tipZvanja["naucnaOblast"]}}</td> -->
+
+            <!-- <td *ngIf="t.tipZvanja != null">{{t.tipZvanja.naziv}}/td> -->
+            <td><button (click)="delete(z.id)">Ukloni</button>
+                <button (click)="setUpdate(z)">Izmeni</button>
+                <button (click)="prikaziDetalje(z)">Detalji</button> <!-- I NACIN -->
+                <a routerLink="/zvanja/{{z.id}}">Detalji</a>  <!-- II NACIN -->
+            </td>
+        </tr>
+        
+    </tbody>
+</table>

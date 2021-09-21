@@ -1,0 +1,29 @@
+<h3>Dodavanje</h3>
+<app-naucna-oblast-form (createEvent)="create($event)"></app-naucna-oblast-form>
+
+<h3>Izmena</h3>
+<app-naucna-oblast-form [naucnaOblast]="naucnaOblastUpdate" (createEvent)="update($event)"></app-naucna-oblast-form>
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Naziv naucne oblasti</th>
+            <th>Akcije</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let z of naucnaOblast">
+            <td>{{z.id}}</td>
+            <td>{{z.naziv}}</td>
+            <td><button (click)="delete(z.id)">Ukloni</button>
+                <button (click)="setUpdate(z)">Izmeni</button>
+                <button (click)="prikaziDetalje(z)">Detalji</button> <!-- I NACIN -->
+                <a routerLink="/zvanja/{{z.id}}">Detalji</a>  <!-- II NACIN -->
+            </td>
+        </tr>
+        
+    </tbody>
+</table>
