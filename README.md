@@ -1,2 +1,5 @@
 # web-application
-LMS - Learning Management System
+
+Java Spring Boot, AngularJS
+
+Model-View-Controller (MVC)
